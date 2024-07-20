@@ -51,6 +51,9 @@ Ensure you have the following software installed:
     ```bash
     pip install -r requirement.txt
     ```
+    ```bash
+    pip install redis google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+    ```
 
 ## Usage
 
@@ -59,7 +62,7 @@ Ensure you have the following software installed:
 To run the application locally:
 
 ```bash
-flask run
+streamlit run /workspaces/API-Key-Generator/app.py
 ```
 
 ### Accessing the Application
