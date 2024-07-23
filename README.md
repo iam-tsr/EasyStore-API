@@ -1,121 +1,94 @@
-# API Key Generator
 
-A project for generating and managing API keys securely.
+# EasyStore API
 
-## Table of Contents
+## Overview
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Introduction
-
-This project provides a secure and efficient way to generate and manage API keys for your applications. It includes a web interface for generating new keys, viewing existing keys, and revoking keys as needed.
+This project provides a simple and efficient backend storage solution for small websites or projects that lack their own backend storage. It allows developers to generate API keys, store files, manage access, monitor usage, and ensure security. The storage service uses the local system drive.
 
 ## Features
 
-- Secure API key generation
-- Web interface for managing keys
-- Integration with Redis for caching and performance
-- Database support for persistent storage
-
-## Installation
-
-### Prerequisites
-
-Ensure you have the following software installed:
-
-- Python 3.x
-- pip
-- Redis
-
-### Steps
-
-1. Clone the repository:
-    ```bash
-    git clone hhttps://github.com/iam-tsr/API-Key-Generator.git
-    cd API-Key-Generator
-    ```
-
-2. Set up a virtual environment:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-
-3. Install the dependencies:
-    ```bash
-    pip install -r requirement.txt
-    ```
-    ```bash
-    pip install redis google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
-    ```
-
-## Usage
-
-### Running the Application
-
-To run the application locally:
-
-```bash
-streamlit run /workspaces/API-Key-Generator/app.py
-```
-
-### Accessing the Application
-
-Once the application is running, you can access it at `http://127.0.0.1:5000`.
-
-## Configuration
-
-### Redis Configuration
-
-Ensure Redis is installed and running on your machine. You can configure Redis settings in the `redis.conf` file.
+- **API Key Generation**: Create unique API keys for users.
+- **File Storage**: Store and manage files using the generated API keys.
+- **Access Management**: Control access to stored files based on API keys.
+- **Usage Monitoring**: Track the usage of storage and API key activity.
+- **Security**: Ensure secure storage and access of files.
 
 ## Project Structure
-
-Here's an overview of the project's structure:
-
 ```
 .
-├── .env
-├── .venv
-├── alembic.ini
-├── alembic/
-├── api.py
-├── api_keys.db
-├── app.py
-├── credentials.json
-├── data/
-├── dump.rdb
-├── redis.conf
-├── redis.log
-├── redis_config.py
-├── requirement.txt
-├── static/
-├── templates/
-├── test.db
-├── token.pickle
-├── upload_to_drive.py
-└── venv/
+├── app.py                 # Main application file
+├── gitignore.txt          # Git ignore file
+├── LICENSE (1).txt        # License information
+├── project_directory.txt  # Project directory description
+├── project_structure.txt  # Project structure information
+├── README (1).md          # Readme file
+├── requirements.txt       # List of dependencies
+├── storage.json           # Storage configuration file
+├── storage_client.py      # Client interface for storage operations
+├── storage_system.py      # Core storage system logic
+├── templates/             # Directory for HTML templates
+└── upload/                # Directory for file uploads
+```
+## Getting Started
+
+### Prerequisites
+```
+- Python 3.x
+- Required dependencies (listed in `requirements.txt`)
 ```
 
-- **app.py**: Main application file.
-- **api.py**: API routes for key management.
-- **alembic/**: Database migration scripts.
-- **templates/**: HTML templates for the web interface.
-- **static/**: Static files (CSS, JS).
-- **redis_config.py**: Configuration for Redis.
-- **requirement.txt**: List of dependencies.
-- **credentials.json** and **token.pickle**: Credentials for accessing external services (if applicable).
+### Installation
 
-## Feedback and Contributions:
+1. Clone the repository:
 
-Feedback and contributions to improve this program are welcome. Feel free to open an issue or submit a pull request.
+   ```bash
+   git clone <repository-url>
+   cd API-KEY_22
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Usage
+
+1. Run the main application:
+
+   ```bash
+   python app.py
+   ```
+
+2. The application will start and provide endpoints for API key generation, file storage, and management.
+
+### Configuration
+
+- Modify `storage.json` to configure the storage settings, such as storage path and limits.
+
+### API Endpoints
+
+- **Generate API Key**: `POST /generate-api-key`
+- **Upload File**: `POST /upload-file`
+- **Access File**: `GET /file/<api_key>/<file_id>`
+- **Monitor Usage**: `GET /usage/<api_key>`
+
+### File Upload Script
+
+A script is available to automate the process of uploading files using the API key. You can find it in the `upload/` directory.
+
+### Security
+
+- Ensure secure storage and access by configuring appropriate permissions in `storage.json`.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details.
+
+## Contributing
+
+Feel free to contribute by submitting issues or pull requests. Please ensure your contributions align with the project's goals and standards.
+
+## Contact
+
+For any inquiries or support, please contact Tushar Rajput (@iam-tsr) or Ansh Chauhan (@Anshchauhanhub).
