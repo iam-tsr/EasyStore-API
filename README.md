@@ -18,10 +18,8 @@ This project provides a simple and efficient backend storage solution for small 
 .
 ├── app.py                 # Main application file
 ├── gitignore.txt          # Git ignore file
-├── LICENSE (1).txt        # License information
 ├── project_directory.txt  # Project directory description
 ├── project_structure.txt  # Project structure information
-├── README (1).md          # Readme file
 ├── requirements.txt       # List of dependencies
 ├── storage.json           # Storage configuration file
 ├── storage_client.py      # Client interface for storage operations
