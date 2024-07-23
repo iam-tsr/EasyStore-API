@@ -40,8 +40,8 @@ This project provides a simple and efficient backend storage solution for small 
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
-   cd API-KEY_22
+   git clone https://github.com/iam-tsr/EasyStore-API.git
+   cd EasyStore-API
    ```
 
 2. Install the dependencies:
@@ -62,7 +62,7 @@ This project provides a simple and efficient backend storage solution for small 
 
 ### Configuration
 
-- Modify `storage.json` to configure the storage settings, such as storage path and limits.
+Modify `storage.json` to configure the storage settings, such as storage path and limits.
 
 ### API Endpoints
 
@@ -77,7 +77,7 @@ A script is available to automate the process of uploading files using the API k
 
 ### Security
 
-- Ensure secure storage and access by configuring appropriate permissions in `storage.json`.
+Ensure secure storage and access by configuring appropriate permissions in `storage.json`.
 
 ## License
 
