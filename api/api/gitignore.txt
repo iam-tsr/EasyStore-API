@@ -1,8 +1,0 @@
-.vscode/
-.venv/
-__pycache__/
-instance/
-uploads/
-*.pyc
-*.pyo
-*.pyd
