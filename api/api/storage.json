@@ -1,0 +1,15 @@
+{
+    "users": {
+        "1be36a12-bfb0-4d89-84d2-9fc98dbae9a2": {
+            "username": "Tushar",
+            "password": "scrypt:32768:8:1$8eMKYdGO277tjtaL$dd1db27f4a12ace32664abf2d8b96eda375a2d2433daa8c178a8d6771db1fa1e5e7b8f03b848220c14475a045f2caf80cbb41d08cc30dfda5e8cf578c4121cf2"
+        },
+        "0fc638e2-0488-4320-9268-69fb262f6c8a": {
+            "username": "anshc552@gmail.com",
+            "password": "pbkdf2:sha256:600000$KfBZc08zVIh6iOLb$b5c73d2f26c5d715284cde385b16254fb0cab2040400f3b55569669535ca9a06"
+        }
+    },
+    "keys": {
+        
+    }
+}
