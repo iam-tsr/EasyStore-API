@@ -89,4 +89,4 @@ Feel free to contribute by submitting issues or pull requests. Please ensure you
 
 ## Contact
 
-For any inquiries or support, please contact Tushar Rajput (@iam-tsr) or Ansh Chauhan (@Anshchauhanhub).
+For any inquiries or support, please contact Tushar Rajput (@iam-tsr) or Ansh Chauhan (@Anshchauhanhub)..
