@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ session['username'] }}</h2>
+
+<h3>Generate API Key</h3>
+<form action="{{ url_for('generate_key') }}" method="post">
+    <input type="submit" value="Generate API Key">
+</form>
+
+{% if api_key %}
+    <p>Your API Key: {{ api_key }}</p>
+{% endif %}
+
+<h3>Upload a File</h3>
+<form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Upload">
+</form>
+
+{% if upload_message %}
+    <p>{{ upload_message }}</p>
+{% endif %}
+
+<h3>Your Uploaded Files</h3>
+<ul>
+    {% for file in uploaded_files %}
+        <li><a href="{{ url_for('uploaded_file', filename=file) }}">{{ file }}</a></li>
+    {% endfor %}
+</ul>
+
+<h3>Instructions</h3>
+<p>Follow these steps to use your API key for file storage:</p>
+<ol>
+    <li>Generate an API key.</li>
+    <li>Use the API key to upload files using the provided commands.</li>
+    <li>Retrieve uploaded files using the filenames.</li>
+</ol>
+{% endblock %}

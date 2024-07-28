@@ -1,0 +1,96 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome, {{ current_user.username }}!</h1>
+        <p class="lead">Generate and manage your API keys easily.</p>
+        <hr class="my-4">
+        <form action="/generate" method="post" class="form-inline">
+            <label class="sr-only" for="description">Description</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" id="description" name="description" placeholder="Description" required>
+            <button type="submit" class="btn btn-primary mb-2">Generate API Key</button>
+        </form>
+    </div>
+
+    <h2>Existing API Keys</h2>
+    <button class="btn btn-secondary" onclick="listKeys()">Refresh</button>
+    <ul id="key-list" class="list-group mt-3"></ul>
+
+    <h3>Python Script</h3>
+    <head>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+        <style>
+            .copy-button {
+                /* background-color: none; */
+                /* border: none; */
+                padding: 5px 7px;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+    </head>
+    <body>
+        <div style="position: relative;">
+            <button class="copy-button" onclick="copyCode()">Copy Code</button>
+            <pre><code class="python">
+        import requests
+
+        # Step 1: Generate API key
+        response = requests.post('http://your-domain.com/generate-key')
+        api_key = response.json()['api_key']
+        print(f"API Key: {api_key}")
+
+        # Step 2: Upload a file
+        files = {'file': open('/path/to/your/file.txt', 'rb')}
+        headers = {'API-Key': api_key}
+        upload_response = requests.post('http://your-domain.com/upload', files=files, headers=headers)
+        upload_result = upload_response.json()
+        print(upload_result)
+
+        # Step 3: Access the uploaded file (use the filename from the upload response)
+        filename = upload_result['filename']
+        file_response = requests.get(f'http://your-domain.com/files/{filename}')
+
+        # Save the downloaded file
+        with open('/path/to/save/file.txt', 'wb') as f:
+            f.write(file_response.content)
+            </code></pre>
+        </div>
+        <script>
+            function copyCode() {
+                const codeBlock = document.querySelector('pre code');
+                const range = document.createRange();
+                range.selectNode(codeBlock);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                alert('Code copied to clipboard!');
+            }
+        </script>
+    </body>
+
+    <script>
+        function listKeys() {
+            fetch('/keys')
+                .then(response => response.json())
+                .then(data => {
+                    const keyList = document.getElementById('key-list');
+                    keyList.innerHTML = '';
+                    for (const [key, value] of Object.entries(data)) {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'list-group-item';
+                        listItem.textContent = `Key: ${key}, Description: ${value.description}, Active: ${value.active}`;
+                        keyList.appendChild(listItem);
+                    }
+                });
+        }
+    </script>
+{% endblock %}
