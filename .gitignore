@@ -1,0 +1,12 @@
+.vscode/
+.venv/
+__pycache__/
+instance/
+*.pyc
+*.pyo
+*.pyd
+.env
+test_query.py
+test_authentication.py
+live-server.txt
+project_structure.txt
