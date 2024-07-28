@@ -1,0 +1,25 @@
+EasyStore-API/
+├── .env
+├── .env.example
+├── .gitignore
+├── app.py
+├── db.sqlite
+├── requirements.txt
+├── migrations/
+│   ├── alembic.ini
+│   ├── env.py
+│   ├── README
+│   └── script.py.mako
+├── static/
+│   └── style.css
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── login.html
+│   └── register.html
+├── uploads/
+│   ├── example.txt
+│   └── file.txt
+└── tests/
+    ├── test_authentication.py
+    └── test_query.py
