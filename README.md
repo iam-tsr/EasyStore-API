@@ -3,6 +3,10 @@
 ## Overview
 The EasyStore API provides a simple and efficient backend storage solution for small websites or projects that lack a backend storage system. This API allows users to generate API keys, store files, manage access, monitor usage, and ensure security. The service utilizes a local system drive for storage and includes features such as API key generation and file upload automation.
 
+## Demo Video -> https://www.youtube.com/watch?v=DtxvTkJkLoY
+
+https://github.com/user-attachments/assets/13750a97-08a4-4260-9b48-1dbbf4ccf58c
+
 ## Project Structure
 The project consists of the following main files and directories:
 
