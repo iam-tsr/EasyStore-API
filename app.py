@@ -145,5 +145,5 @@ def allowed_file(filename):
 if __name__ == '__main__':
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
-    db.create_all()
+    # db.create_all()
     app.run(debug=True)
