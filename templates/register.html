@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="header" href="/login">EasyStore API</div>
-        <div class="card">
-            <div class="card-header">
-                <h1 class="card-title">Register</h1>
-            </div>
-            <div class="card-content">
-                <input type="text" placeholder="Username" class="input" required>
-                <input type="password" placeholder="Password" class="input" required>
-            </div>
-            <div class="card-footer">
-                <button class="btn" type="submit">Create account</button>
-                <p class="text">Have an account? <a href="/login">Sign in</a></p>
+<!-- templates/register.html -->
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<body style="background-color: #000000;">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow-lg p-4 rounded">
+            <div id="card-content">
+                <div id="card-title">
+                    <h1 class="h3 mb-4 text-center" style="color: #ffffff;">Register Now</h1>
+                </div>
+                <form action="/register" method="post">
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="username" name="username" class="form-control rounded" placeholder="Username" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="password" name="password" class="form-control rounded" placeholder="Password" required>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block rounded" type="submit">Create Account</button>
+                </form>
             </div>
         </div>
     </div>
 </body>
-</html>
+{% endblock %}
