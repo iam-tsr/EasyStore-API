@@ -77,10 +77,95 @@ body {
 .text {
     color: #9CA3AF; /* gray-400 */
     font-size: 0.875rem;
+    text-align: center;
 }
 
 .text a {
     color: #A855F7; /* purple-500 */
 }
 
+.alert-danger {
+    /* background-color: #F87171; */
+    color: #F87171; /* gray-800 */
+    font-size: 0.875rem;
+    /* padding: 0.75rem; */
+    /* border-radius: 0.25rem; */
+    margin-top: 1rem;
+    text-align: center;
+}
 
+/* Welcome Area Styling */
+.welcome-area {
+    background-color: #2c2c2c;
+    color: #7fa516;
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    color: #1a6215;
+}
+
+.jumbotron{
+    height: 300px;
+    
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #333;
+    background-color: #222;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #8d7bff;
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#apibutton{
+    height: 39px;    
+}
+
+
+
+.btn-primary:hover {
+    background-color: #8d7bff;
+    transform: scale(1.05);
+}
+
+
+
+/* Link Styling */
+.text-primary {
+    color: #8d7bff;
+}
+
+.text-primary:hover {
+    text-decoration: underline;
+}
+
+/* List Links */
+.file-link {
+    color: #8d7bff;
+}
+
+.file-link:hover {
+    text-decoration: underline;
+}
+
+/* Instruction List */
+ol {
+    padding-left: 20px;
+}

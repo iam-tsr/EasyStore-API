@@ -38,8 +38,8 @@ The project consists of the following main files and directories:
 
 2. **Create a Virtual Environment**
    ```sh
-   python -m venv venv
-   source venv\Scripts\activate  # On Windows use `venv/bin/activate`
+   python -m venv .venv
+   source .venv\Scripts\activate  # On Windows use `.venv/bin/activate`
    ```
 
 3. **Install Dependencies**

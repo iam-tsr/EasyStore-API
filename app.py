@@ -7,6 +7,7 @@ import os
 from werkzeug.utils import secure_filename
 from functools import wraps
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret_key')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://api:key@localhost/store')
@@ -17,7 +18,7 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login'
+login_manager.login_view = '/new/login'
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -53,7 +54,7 @@ def require_api_key(f):
         return f(*args, **kwargs)
     return decorated_function
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/new/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -61,10 +62,10 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for('index'))
-    return render_template('login.html')
+            return redirect(url_for('/new/index'))
+    return render_template('/new/login.html')
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/new/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
@@ -72,25 +73,27 @@ def register():
 
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
-            return 'Username already exists. Please choose a different username.', 400
+            # Pass the error message to the template
+            return render_template('/new/register.html', error="Username already exists. Please choose a different username.")
 
         hashed_password = generate_password_hash(password, method='sha256')
         user = User(username=username, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('login'))
-    return render_template('register.html')
+        return redirect(url_for('/new/login'))
+    
+    return render_template('/new/register.html')
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('/new/login'))
 
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html')
+    return render_template('/new/index.html')
 
 @app.route('/generate', methods=['POST'])
 @login_required
@@ -100,7 +103,7 @@ def generate():
     new_key = APIKey(user_id=current_user.id, key=key, description=description)
     db.session.add(new_key)
     db.session.commit()
-    return redirect(url_for('index'))
+    return redirect(url_for('/new/index'))
 
 @app.route('/keys')
 @login_required
@@ -117,7 +120,7 @@ def deactivate():
     if key:
         key.active = False
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('/new/index'))
     else:
         return 'API key not found or you do not have permission to deactivate this key.', 404
 

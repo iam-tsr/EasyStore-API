@@ -1,0 +1,40 @@
+{% extends "/new/base.html" %}
+
+{% block title %}Home - EasyStore API{% endblock %}
+
+{% block content %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/static/style_new.css">
+</head> -->
+<body>
+    <div class="container">
+        <!-- <div class="header" href="/login">EasyStore API</div> -->
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Sign In</h1>
+            </div>
+            <form method="POST" action="{{ url_for('login') }}">
+                <input type="text" name="username" placeholder="Username" class="input" required>
+                <input type="password" name="password" placeholder="Password" class="input" required>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <!-- <div class="card-content">
+                <input type="text" placeholder="Username" class="input" required>
+                <input type="password" placeholder="Password" class="input" required>
+            </div>
+            <div class="card-footer">
+                <button class="btn" type="submit">Login</button> -->
+                <p class="text">Don’t have an account? <a href="/new/register">Create here</a></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+<!-- </html> -->
+{% endblock %}
